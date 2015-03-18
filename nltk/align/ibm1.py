@@ -116,7 +116,7 @@ class IBMModel1(object):
         for j, en_word in enumerate(align_sent.words):
             
             # Initialize the maximum probability with Null token
-            max_align_prob = (self.probabilities[en_word][None], None)
+            max_align_prob = (self.probabilities[en_word][None], -1)
             for i, fr_word in enumerate(align_sent.mots):
                 # Find out the maximum probability
                 max_align_prob = max(max_align_prob,
@@ -124,7 +124,7 @@ class IBMModel1(object):
 
             # If the maximum probability is not Null token,
             # then append it to the alignment. 
-            if max_align_prob[1] is not None:
+            if max_align_prob[1] != -1:
                 alignment.append((j, max_align_prob[1]))
 
         return AlignedSent(align_sent.words, align_sent.mots, alignment)

@@ -56,7 +56,7 @@ class StanfordTokenizer(TokenizerI):
             if len(tokens) % 2 !=0:
                     raise ValueError("Must be in set of (argument,value) pair")
             
-            for i in range(len(tokens)/2):
+            for i in range(len(tokens)//2):
                 key = tokens[2*i]
                 # Work the case when key might contain -  as in -tokenizeNLs
                 temp = list(key)
